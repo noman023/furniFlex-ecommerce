@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import Root from "./components/Root.jsx";
-import Home from "./components/Home.jsx";
-import Login from "./components/Login.jsx";
+import Root from "./layout/Root.jsx";
+import Home from "./routes/Home.jsx";
+import Login from "./routes/Login.jsx";
 
-import SignUp from "./components/SignUp.jsx";
-import Cart from "./components/Cart.jsx";
-import NotFound from "./components/NotFound.jsx";
+import SignUp from "./routes/SignUp.jsx";
+import Cart from "./routes/Cart.jsx";
+import NotFound from "./routes/NotFound.jsx";
 
 const router = createBrowserRouter([
   {
