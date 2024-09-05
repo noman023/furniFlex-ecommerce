@@ -7,6 +7,7 @@ import Login from "./routes/Login.jsx";
 import SignUp from "./routes/SignUp.jsx";
 import Cart from "./routes/Cart.jsx";
 import NotFound from "./routes/NotFound.jsx";
+import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
