@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { AppContext } from "../context/AppContext";
 import SignAndLoginDesgin from "../components/shared/SignAndLoginDesgin";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function SignUp() {
   const { login } = useContext(AppContext);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,11 +19,14 @@ export default function SignUp() {
     const userInfo = {
       email: email.value,
       pass: pass.value,
-      firstName: firstName.value,
-      lastName: lastName.value,
+      name: firstName.value + " " + lastName.value,
     };
 
     login(userInfo);
+  };
+
+  const hanldeShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   const link = (
@@ -65,20 +70,33 @@ export default function SignUp() {
             className="input input-bordered w-full bg-slate-50"
           />
         </div>
-
         <input
           type="email"
           name="email"
           placeholder="Email Address"
           className="input input-bordered w-full bg-slate-50"
         />
-        <input
-          type="password"
-          name="pass"
-          placeholder="Password"
-          className="input input-bordered w-full bg-slate-50"
-        />
 
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            name="pass"
+            placeholder="Password"
+            className="input input-bordered w-full bg-slate-50"
+          />
+
+          {showPassword ? (
+            <FaEye
+              onClick={hanldeShowPassword}
+              className="absolute right-2 bottom-3 text-xl cursor-pointer"
+            />
+          ) : (
+            <FaEyeSlash
+              onClick={hanldeShowPassword}
+              className="absolute right-2 bottom-3 text-xl cursor-pointer"
+            />
+          )}
+        </div>
         <div className="flex items-center gap-1">
           <input
             type="checkbox"
@@ -90,7 +108,6 @@ export default function SignUp() {
             I agree to the <a href="">Terms & policy</a>
           </span>
         </div>
-
         <button type="submit" className="btn text-white">
           Signup
         </button>
