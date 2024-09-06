@@ -58,7 +58,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="flex gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           <a className="link link-hover">March22 Recap</a>
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">General Terms</a>
