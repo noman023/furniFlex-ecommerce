@@ -1,3 +1,54 @@
+import CartItem from "../components/CartItem";
+
 export default function Cart() {
-  return <div>Cart</div>;
+  return (
+    <div className="flex flex-col justify-between lg:flex-row gap-14 p-3 my-5">
+      {/* ordered items */}
+      <div className="lg:w-[60%] text-black">
+        <h2 className="text-2xl font-semibold mb-6">
+          An overview of your order(s)
+        </h2>
+
+        <div>
+          <CartItem />
+          <CartItem />
+        </div>
+      </div>
+
+      {/* order stats */}
+      <div className="lg:w-[30%]">
+        <h2 className="text-black text-2xl font-semibold mb-6">
+          Order Details
+        </h2>
+
+        <div className="bg-slate-50 py-4 px-3 rounded-md">
+          <div className="space-y-1 text-gray-500 font-medium">
+            <div className="flex justify-between">
+              <p>Total Items:</p>
+              <p>05</p>
+            </div>
+
+            <div className="flex justify-between">
+              <p>Shipping Fee:</p>
+              <p>Free</p>
+            </div>
+
+            <div className="flex justify-between">
+              <p>Shipping Fee:</p>
+              <p>Free</p>
+            </div>
+          </div>
+
+          <hr className="my-2" />
+
+          <div className="flex justify-between text-black font-bold">
+            <p>Total:</p>
+            <p> $180</p>
+          </div>
+
+          <button className="btn w-full text-white mt-3">Checkout</button>
+        </div>
+      </div>
+    </div>
+  );
 }
