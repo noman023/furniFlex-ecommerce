@@ -1,12 +1,15 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { AppContext } from "../context/AppContext";
 import SignAndLoginDesgin from "../components/shared/SignAndLoginDesgin";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function SignUp() {
   const { login } = useContext(AppContext);
   const [showPassword, setShowPassword] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +26,7 @@ export default function SignUp() {
     };
 
     login(userInfo);
+    navigate("/");
   };
 
   const hanldeShowPassword = () => {
