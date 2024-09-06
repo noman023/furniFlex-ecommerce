@@ -58,6 +58,7 @@ export default function Login() {
             name="email"
             placeholder="Email Address"
             className="input input-bordered w-full bg-slate-50"
+            required
           />
 
           <div className="relative">
@@ -66,6 +67,7 @@ export default function Login() {
               name="pass"
               placeholder="Password"
               className="input input-bordered w-full bg-slate-50"
+              required
             />
 
             {showPassword ? (
