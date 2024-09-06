@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { IoBagOutline } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
 
+import { AppContext } from "../context/AppContext";
+
 export default function Navbar() {
+  const { user, logout } = useContext(AppContext);
+
   const listItems = (
     <>
       <li>
@@ -68,15 +73,65 @@ export default function Navbar() {
 
         {/* nav end */}
         <div className="navbar-end">
-          <Link to={"/cart"}>
-            <div className="text-3xl mr-4 cursor-pointer">
-              <IoBagOutline />
-            </div>
-          </Link>
+          <div className="flex-none">
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle"
+              >
+                {/* cart icon */}
+                <div className="indicator">
+                  <div className="text-3xl cursor-pointer">
+                    <IoBagOutline />
+                  </div>
+                  <span className="badge badge-sm indicator-item mt-6">8</span>
+                </div>
+              </div>
 
-          <div className="avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+              <div
+                tabIndex={0}
+                className="card card-compact dropdown-content z-[1] mt-3 w-52 shadow"
+              >
+                <div className="card-body">
+                  <span className="text-lg font-bold">8 Items</span>
+                  <span className="text-info">Subtotal: $999</span>
+                  <div className="card-actions">
+                    <Link to={"/cart"}>
+                      <button className="btn btn-primary btn-block">
+                        View cart
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* profile section */}
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  />
+                </div>
+              </div>
+
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>{user ? user.email : "User Email"}</li>
+
+                <li onClick={() => logout()}>
+                  <a>Logout</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
