@@ -1,6 +1,8 @@
 import { RxCross1 } from "react-icons/rx";
 
-export default function CartItem() {
+export default function CartItem({ data }) {
+  const { image, price, title } = data;
+
   return (
     <div className="flex gap-5 text-black bg-slate-50 border px-2 py-5">
       {/* manage quantity  */}
@@ -9,7 +11,7 @@ export default function CartItem() {
           -
         </button>
 
-        <p className="text-2xl border py-2 px-3">2</p>
+        <p className="text-2xl border py-2 px-3">1</p>
 
         <button className="hover:text-gray-500" title="Increase Quantity">
           +
@@ -20,19 +22,22 @@ export default function CartItem() {
       <div className="w-full flex gap-2">
         <div>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+            src={image}
             alt="product image"
-            className="w-24 rounded-xl"
+            className="w-24 h-24 rounded-xl"
           />
         </div>
 
-        <div className="w-full flex justify-between">
-          <h1 className="text-xl font-semibold">Product name</h1>
+        <div className="relative w-full">
+          <h1 className="text-xl font-semibold">{title}</h1>
 
-          <div className="flex flex-col justify-between text-xl">
-            <RxCross1 className="cursor-pointer" title="Delete Item" />
+          <div className="text-xl">
+            <RxCross1
+              className="cursor-pointer absolute top-0 right-0"
+              title="Delete Item"
+            />
 
-            <p>$50</p>
+            <p className="absolute bottom-0 right-0 font-bold">${price}</p>
           </div>
         </div>
       </div>

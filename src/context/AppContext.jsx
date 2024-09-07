@@ -8,12 +8,19 @@ export const AppContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     // get user if available
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
+    }
+
+    // get cart items if available
+    const storedCartItems = localStorage.getItem("cart");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
     }
 
     // fetch products
@@ -46,6 +53,18 @@ export const AppContextProvider = ({ children }) => {
     localStorage.removeItem("user");
   };
 
+  // Function to add product to cartItems
+  const addToCart = (product) => {
+    setCartItems((prev) => [...prev, product]);
+
+    // get cart from localStorage or initialize it as an empty array
+    const storeCartItems = localStorage.getItem("cart");
+    const cartArray = storeCartItems ? JSON.parse(storeCartItems) : [];
+
+    cartArray.push(product);
+    localStorage.setItem("cart", JSON.stringify(cartArray));
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -54,6 +73,8 @@ export const AppContextProvider = ({ children }) => {
         login,
         logout,
         products,
+        cartItems,
+        addToCart,
       }}
     >
       {children}

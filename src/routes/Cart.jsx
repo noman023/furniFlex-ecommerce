@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import CartItem from "../components/CartItem";
+import { AppContext } from "../context/AppContext";
 
 export default function Cart() {
+  const { cartItems: cartProduct } = useContext(AppContext);
+
   return (
     <div className="flex flex-col justify-between lg:flex-row gap-14 p-3 my-5">
       {/* ordered items */}
@@ -10,8 +14,9 @@ export default function Cart() {
         </h2>
 
         <div>
-          <CartItem />
-          <CartItem />
+          {cartProduct.map((product) => (
+            <CartItem key={product.id} data={product} />
+          ))}
         </div>
       </div>
 

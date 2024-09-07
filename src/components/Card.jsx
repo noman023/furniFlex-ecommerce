@@ -1,7 +1,13 @@
+import { useContext } from "react";
 import { IoBagOutline } from "react-icons/io5";
 
+import { AppContext } from "../context/AppContext";
+
 export default function Card({ data }) {
+  const { addToCart } = useContext(AppContext);
+
   const { title, price, description, image } = data;
+
   return (
     <div className="card bg-slate-50 shadow-xl p-3 h-full">
       <figure>
@@ -21,7 +27,10 @@ export default function Card({ data }) {
       </div>
 
       <div className="card-actions mt-4">
-        <button className="btn w-full text-white">
+        <button
+          className="btn w-full text-white"
+          onClick={() => addToCart(data)}
+        >
           <IoBagOutline /> Add to Cart
         </button>
       </div>
