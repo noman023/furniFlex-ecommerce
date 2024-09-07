@@ -5,7 +5,8 @@ import { Link, NavLink } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 
 export default function Navbar() {
-  const { user, logout } = useContext(AppContext);
+  const { user, logout, totalPrice, cartItems } = useContext(AppContext);
+  const itemsCount = cartItems.length;
 
   const listItems = (
     <>
@@ -85,7 +86,9 @@ export default function Navbar() {
                   <div className="text-3xl cursor-pointer">
                     <IoBagOutline />
                   </div>
-                  <span className="badge badge-sm indicator-item mt-6">8</span>
+                  <span className="badge badge-sm indicator-item mt-6">
+                    {itemsCount}
+                  </span>
                 </div>
               </div>
 
@@ -93,9 +96,10 @@ export default function Navbar() {
                 tabIndex={0}
                 className="card card-compact dropdown-content bg-gray-50 z-[1] mt-3 w-52 shadow"
               >
-                <div className="card-body">
-                  <span className="text-lg font-bold">8 Items</span>
-                  <span className="text-black">Subtotal: $999</span>
+                <div className="card-body text-black font-bold">
+                  <p className="text-lg">{itemsCount} Items</p>
+                  <p className="text-lg">Subtotal: ${totalPrice}</p>
+
                   <div className="card-actions">
                     <Link to={"/cart"}>
                       <button className="btn btn-primary btn-block text-white">

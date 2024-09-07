@@ -10,6 +10,8 @@ export const AppContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
+  const [totalPrice, setTotalPrice] = useState(0);
+
   useEffect(() => {
     // get user if available
     const storedUser = localStorage.getItem("user");
@@ -36,7 +38,20 @@ export const AppContextProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  // Function to log in the user
+  // Calculate total price whenever cartItems changes
+  useEffect(() => {
+    const calculateTotalPrice = () => {
+      const total = cartItems.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+      );
+
+      setTotalPrice(total);
+    };
+
+    calculateTotalPrice();
+  }, [cartItems]);
+
   const login = (userData) => {
     // check if user already sign in
     if (user) {
@@ -55,7 +70,7 @@ export const AppContextProvider = ({ children }) => {
 
   // Function to add product to cartItems/localstorage
   const addToCart = (product) => {
-    setCartItems((prev) => [...prev, product]);
+    setCartItems((prev) => [...prev, { ...product, quantity: 1 }]); // add quantity
 
     // get cart from localStorage or initialize it as an empty array
     const storedCartItems = localStorage.getItem("cart");
@@ -71,9 +86,19 @@ export const AppContextProvider = ({ children }) => {
     const filteredState = cartItems.filter((item) => item.id !== id);
     setCartItems(filteredState);
 
-    // remove existing cart and add by filteredState
-    localStorage.removeItem("cart");
+    // update localstorage
     localStorage.setItem("cart", JSON.stringify(filteredState));
+  };
+
+  // function to update item's quantity
+  const updateCartItemQuantity = (id, quantity) => {
+    const updatedCartItems = cartItems.map((item) =>
+      item.id === id ? { ...item, quantity } : item
+    );
+
+    // update state
+    setCartItems(updatedCartItems);
+    localStorage.setItem("cart", JSON.stringify(updatedCartItems));
   };
 
   return (
@@ -87,6 +112,8 @@ export const AppContextProvider = ({ children }) => {
         cartItems,
         addToCart,
         deleteFromCart,
+        totalPrice,
+        updateCartItemQuantity,
       }}
     >
       {children}

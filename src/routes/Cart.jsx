@@ -1,9 +1,10 @@
 import { useContext } from "react";
+
 import CartItem from "../components/CartItem";
 import { AppContext } from "../context/AppContext";
 
 export default function Cart() {
-  const { cartItems: cartProduct } = useContext(AppContext);
+  const { cartItems: cartProduct, totalPrice } = useContext(AppContext);
 
   return (
     <div className="flex flex-col justify-between lg:flex-row gap-14 p-3 my-5">
@@ -30,7 +31,7 @@ export default function Cart() {
           <div className="space-y-2 text-gray-500 font-medium">
             <div className="flex justify-between">
               <p>Subtotal:</p>
-              <p>$500</p>
+              <p>${totalPrice}</p>
             </div>
 
             <div className="flex justify-between">
@@ -48,7 +49,7 @@ export default function Cart() {
 
           <div className="flex justify-between text-black font-bold">
             <p>Total:</p>
-            <p> $180</p>
+            <p> ${totalPrice}</p>
           </div>
         </div>
 
