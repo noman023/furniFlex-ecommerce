@@ -53,16 +53,27 @@ export const AppContextProvider = ({ children }) => {
     localStorage.removeItem("user");
   };
 
-  // Function to add product to cartItems
+  // Function to add product to cartItems/localstorage
   const addToCart = (product) => {
     setCartItems((prev) => [...prev, product]);
 
     // get cart from localStorage or initialize it as an empty array
-    const storeCartItems = localStorage.getItem("cart");
-    const cartArray = storeCartItems ? JSON.parse(storeCartItems) : [];
+    const storedCartItems = localStorage.getItem("cart");
+    const cartArray = storedCartItems ? JSON.parse(storedCartItems) : [];
 
     cartArray.push(product);
     localStorage.setItem("cart", JSON.stringify(cartArray));
+  };
+
+  // Function to remove product from cartItems/localstorage
+  const deleteFromCart = (id) => {
+    // filter by id and update state
+    const filteredState = cartItems.filter((item) => item.id !== id);
+    setCartItems(filteredState);
+
+    // remove existing cart and add by filteredState
+    localStorage.removeItem("cart");
+    localStorage.setItem("cart", JSON.stringify(filteredState));
   };
 
   return (
@@ -75,6 +86,7 @@ export const AppContextProvider = ({ children }) => {
         products,
         cartItems,
         addToCart,
+        deleteFromCart,
       }}
     >
       {children}

@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { RxCross1 } from "react-icons/rx";
+import { AppContext } from "../context/AppContext";
 
 export default function CartItem({ data }) {
-  const { image, price, title } = data;
+  const { deleteFromCart } = useContext(AppContext);
+  const { image, price, title, id } = data;
 
   return (
     <div className="flex gap-5 text-black bg-slate-50 border px-2 py-5">
@@ -35,6 +38,7 @@ export default function CartItem({ data }) {
             <RxCross1
               className="cursor-pointer absolute top-0 right-0"
               title="Delete Item"
+              onClick={() => deleteFromCart(id)}
             />
 
             <p className="absolute bottom-0 right-0 font-bold">${price}</p>
