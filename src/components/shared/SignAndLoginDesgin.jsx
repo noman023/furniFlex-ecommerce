@@ -4,7 +4,12 @@ import appIcon from "../../../public/icon.png";
 
 export default function SignAndLoginDesgin({ children, link }) {
   return (
-    <div className="flex flex-col-reverse md:flex-row justify-between">
+    <div
+      className="flex flex-col-reverse md:flex-row justify-between"
+      style={{
+        backgroundImage: `url('../../../public/chair.png')`,
+      }}
+    >
       <div className="md:w-1/2 bg-white p-3 md:p-20">
         <div className="bg-gray-100 py-8 px-3 rounded-md">
           {children}
@@ -24,7 +29,7 @@ export default function SignAndLoginDesgin({ children, link }) {
         </div>
       </div>
 
-      <div className="md:w-1/2 bg-black flex flex-col justify-center items-center p-5">
+      <div className="md:w-1/2 flex flex-col justify-center items-center p-5">
         <div className="max-w-[450px] text-center">
           <div className="flex flex-col items-center gap-1">
             <img src={appIcon} alt="app icon" className="w-20 h-20" />
