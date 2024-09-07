@@ -70,6 +70,9 @@ export const AppContextProvider = ({ children }) => {
 
   // Function to add product to cartItems/localstorage
   const addToCart = (product) => {
+    const productExists = cartItems.find((item) => item.id === product.id);
+    if (productExists) return; // prevent adding same product
+
     setCartItems((prev) => [...prev, { ...product, quantity: 1 }]); // add quantity
 
     // get cart from localStorage or initialize it as an empty array
