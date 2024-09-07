@@ -31,6 +31,11 @@ export const AppContextProvider = ({ children }) => {
 
   // Function to log in the user
   const login = (userData) => {
+    // check if user already sign in
+    if (user) {
+      return alert("You've already sign in. Please logout first!.");
+    }
+
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
   };
