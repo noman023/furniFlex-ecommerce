@@ -6,12 +6,16 @@ import {
 } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
+import appIcon from "../../public/icon.png";
+
 export default function Footer() {
   return (
     <footer className="bg-base-200 text-base-content px-2 py-5 md:py-10">
       <div className="flex flex-col md:flex-row gap-4 justify-between">
-        <div>
-          <p className="text-xl font-bold cursor-pointer text-center">
+        <div className="flex gap-1">
+          <img src={appIcon} alt="app icon" className="w-9 h-9" />
+
+          <p className="text-xl font-bold cursor-pointer ">
             Furni<span className="text-blue-600 ">Flex</span>
           </p>
         </div>

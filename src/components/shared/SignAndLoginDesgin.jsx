@@ -1,5 +1,7 @@
 import { FaApple, FaGoogle } from "react-icons/fa";
 
+import appIcon from "../../../public/icon.png";
+
 export default function SignAndLoginDesgin({ children, link }) {
   return (
     <div className="flex flex-col-reverse md:flex-row justify-between">
@@ -24,9 +26,13 @@ export default function SignAndLoginDesgin({ children, link }) {
 
       <div className="md:w-1/2 bg-black flex flex-col justify-center items-center p-5">
         <div className="max-w-[450px] text-center">
-          <h2 className="text-xl text-white font-bold cursor-pointer">
-            Furni<span className="text-blue-600 ">Flex</span>
-          </h2>
+          <div className="flex flex-col items-center gap-1">
+            <img src={appIcon} alt="app icon" className="w-20 h-20" />
+
+            <p className="text-xl text-white font-bold cursor-pointer">
+              Furni<span className="text-blue-600 ">Flex</span>
+            </p>
+          </div>
 
           <p className="text-gray-400 mt-1">
             Discover a seamless shopping experience with our curated collection

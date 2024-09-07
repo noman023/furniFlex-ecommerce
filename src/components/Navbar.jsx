@@ -3,6 +3,7 @@ import { IoBagOutline } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
 
 import { AppContext } from "../context/AppContext";
+import appIcon from "../../public/icon.png";
 
 export default function Navbar() {
   const { user, logout, totalPrice, cartItems } = useContext(AppContext);
@@ -61,9 +62,13 @@ export default function Navbar() {
 
           {/* logo */}
           <Link to={"/"}>
-            <p className="text-xl font-bold cursor-pointer">
-              Furni<span className="text-blue-600 ">Flex</span>
-            </p>
+            <div className="flex items-center gap-1">
+              <img src={appIcon} alt="app icon" className="w-9 h-9" />
+
+              <p className="text-xl font-bold cursor-pointer">
+                Furni<span className="text-blue-600 ">Flex</span>
+              </p>
+            </div>
           </Link>
         </div>
 
