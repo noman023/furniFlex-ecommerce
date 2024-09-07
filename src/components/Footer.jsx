@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="bg-base-200 text-base-content px-2 py-5 md:py-10">
       <div className="flex flex-col md:flex-row gap-4 justify-between">
         <div>
-          <p className="text-xl font-bold cursor-pointer">
+          <p className="text-xl font-bold cursor-pointer text-center">
             Furni<span className="text-blue-600 ">Flex</span>
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function Footer() {
 
       <hr className="my-10" />
 
-      <div className="flex flex-col lg:flex-row gap-4 justify-between">
+      <div className="flex flex-col lg:flex-row gap-6 justify-between">
         <div className="flex gap-3">
           <a href="https://www.facebook.com/98noman/" target="_blank">
             <FaFacebookF />
@@ -58,7 +58,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-5">
           <a className="link link-hover">March22 Recap</a>
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">General Terms</a>
@@ -73,7 +73,7 @@ export default function Footer() {
       </div>
 
       <div>
-        <p className="text-center mt-3">
+        <p className="text-gray-500 text-center mt-10">
           EEVE &copy; 2024, All rights reserved.
         </p>
       </div>

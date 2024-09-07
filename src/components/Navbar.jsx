@@ -139,14 +139,17 @@ export default function Navbar() {
                 <hr />
 
                 <div className="space-y-1">
-                  <li>
+                  <li className="hover:bg-black hover:text-white rounded-lg">
                     <Link to={"/signup"}>Sign Up</Link>
                   </li>
-                  <li>
+                  <li className="hover:bg-black hover:text-white rounded-lg">
                     <Link to={"/login"}>Sign In</Link>
                   </li>
 
-                  <li onClick={() => logout()}>
+                  <li
+                    onClick={() => logout()}
+                    className="hover:bg-black hover:text-white rounded-lg"
+                  >
                     <a>Logout</a>
                   </li>
                 </div>
