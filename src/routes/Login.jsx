@@ -3,13 +3,14 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { AppContext } from "../context/AppContext";
 import SignAndLoginDesgin from "../components/shared/SignAndLoginDesgin";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const { login } = useContext(AppContext);
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +24,7 @@ export default function Login() {
     };
 
     login(userInfo);
-    navigate("/");
+    navigate(location?.state ?? "/");
   };
 
   const hanldeShowPassword = () => {

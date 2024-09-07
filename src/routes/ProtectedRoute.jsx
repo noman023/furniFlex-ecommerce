@@ -10,6 +10,6 @@ export default function ProtectedRoute({ children }) {
     return <Loading />;
   }
 
-  // if user exist go to children component else login
-  return user ? children : <Navigate to="/login" />;
+  // if user exist go to children component else login component with state
+  return user ? children : <Navigate to="/login" state={location.pathname} />;
 }
