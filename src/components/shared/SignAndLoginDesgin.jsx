@@ -1,13 +1,13 @@
 import { FaApple, FaGoogle } from "react-icons/fa";
 
-import appIcon from "../../../public/icon.png";
+import appIcon from "/icon.png";
 
 export default function SignAndLoginDesgin({ children, link }) {
   return (
     <div
       className="flex flex-col-reverse md:flex-row justify-between"
       style={{
-        backgroundImage: `url('../../../public/chair.png')`,
+        backgroundImage: `url('/chair.png')`,
       }}
     >
       <div className="md:w-1/2 bg-white p-3 md:p-20">

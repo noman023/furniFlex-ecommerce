@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { AppContext } from "../context/AppContext";
 import SignAndLoginDesgin from "../components/shared/SignAndLoginDesgin";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const { login } = useContext(AppContext);
@@ -34,9 +34,9 @@ export default function Login() {
   const link = (
     <p className="text-center mt-4">
       Have an account?{" "}
-      <a href="/signup" className="text-blue-500">
+      <Link to={"/signup"} className="text-blue-500">
         Sign Up
-      </a>
+      </Link>
     </p>
   );
 

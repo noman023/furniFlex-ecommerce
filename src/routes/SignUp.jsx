@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { AppContext } from "../context/AppContext";
@@ -37,9 +37,9 @@ export default function SignUp() {
   const link = (
     <p className="text-center mt-4">
       Have an account?{" "}
-      <a href="/login" className="text-blue-500">
+      <Link to={"/login"} className="text-blue-500">
         Sign In
-      </a>
+      </Link>
     </p>
   );
 
